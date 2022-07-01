@@ -14,3 +14,14 @@ kits:
     name: "Frog"
     material: SUGAR
     lore: []
+spawnTeleportDelayInSeconds: 5
+spawn:
+  world: world
+  x: 0
+  y: 0
+  z: 0
+  yaw: 0
+  pitch: 0
+book:
+  material: "BOOK"
+  displayName: "&eKits"
