@@ -19,7 +19,8 @@ public class FrogKit extends AbstractKit {
         super(
                 Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.frog.material")),
                 SoupPvPPlugin.getInstance().getConfig().getString("kits.frog.name"),
-                SoupPvPPlugin.getInstance().getConfig().getInt("kits.frog.price")
+                SoupPvPPlugin.getInstance().getConfig().getInt("kits.frog.price"),
+                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.frog.lore")
         );
     }
 

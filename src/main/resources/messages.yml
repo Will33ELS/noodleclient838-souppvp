@@ -3,5 +3,8 @@ spawn:
   teleport: "&aTeleportation to spawn:"
 repair:
   noSword: "&cYou have no wooden swords in your inventory to repair!"
+gui:
+  kits:
+    title: "Kits"
 
 enoughCredit: "&cYou don't have enough credit!"

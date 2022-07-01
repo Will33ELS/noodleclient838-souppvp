@@ -2,6 +2,8 @@ package fr.will33.souppvp.api;
 
 import fr.will33.souppvp.SoupPvPPlugin;
 import fr.will33.souppvp.model.PvpPlayer;
+import fr.will33.souppvp.util.ChatUtil;
+import fr.will33.souppvp.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,20 +12,29 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AbstractKit implements Listener {
 
+    public static List<AbstractKit> kits = new ArrayList<>();
     protected final SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
     private final Material material;
     private final String name;
     private final int price;
+    private final List<String> lore;
 
-    public AbstractKit(Material material, String name, int price){
+    public AbstractKit(Material material, String name, int price, List<String> lore){
         this.material = material;
         this.name = name;
         this.price = price;
+        this.lore = lore;
 
+        kits.add(this);
         Bukkit.getPluginManager().registerEvents(this, SoupPvPPlugin.getInstance());
     }
 
@@ -67,6 +78,15 @@ public abstract class AbstractKit implements Listener {
      */
     public int getPrice() {
         return price;
+    }
+
+    /**
+     * Transform item for display in the GUI
+     * @return
+     */
+    public ItemStack toItemStack(){
+        List<String> lore = this.lore.stream().map(ChatUtil::translate).collect(Collectors.toList());
+        return new ItemBuilder(this.material, 1, this.name, lore).toItemStack();
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

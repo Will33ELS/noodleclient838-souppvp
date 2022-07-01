@@ -12,7 +12,8 @@ public class AthleteKit extends AbstractKit {
         super(
                 Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.athlete.material")),
                 SoupPvPPlugin.getInstance().getConfig().getString("kits.athlete.name"),
-                SoupPvPPlugin.getInstance().getConfig().getInt("kits.athlete.price")
+                SoupPvPPlugin.getInstance().getConfig().getInt("kits.athlete.price"),
+                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.athlete.lore")
         );
     }
 

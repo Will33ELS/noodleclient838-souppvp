@@ -3,6 +3,7 @@ package fr.will33.souppvp;
 import fr.will33.souppvp.listener.PlayerListener;
 import fr.will33.souppvp.manager.CommandManager;
 import fr.will33.souppvp.manager.ConfigurationManager;
+import fr.will33.souppvp.manager.KitManager;
 import fr.will33.souppvp.manager.PvPManager;
 import fr.will33.souppvp.model.PvpPlayer;
 import org.bukkit.Bukkit;
@@ -35,6 +36,7 @@ public class SoupPvPPlugin extends JavaPlugin {
 
         this.pvPManager = new PvPManager();
 
+        new KitManager().registerKits();
         new CommandManager().registerCommands(this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
     }

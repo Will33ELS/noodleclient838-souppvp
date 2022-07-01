@@ -9,7 +9,8 @@ public class PvpKit extends AbstractKit {
         super(
                 Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.pvp.material")),
                 SoupPvPPlugin.getInstance().getConfig().getString("kits.pvp.name"),
-                SoupPvPPlugin.getInstance().getConfig().getInt("kits.pvp.price")
+                SoupPvPPlugin.getInstance().getConfig().getInt("kits.pvp.price"),
+                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.pvp.lore")
         );
     }
 }

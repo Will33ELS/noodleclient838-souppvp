@@ -13,7 +13,8 @@ public class PyroKit extends AbstractKit {
         super(
                 Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.pyro.material")),
                 SoupPvPPlugin.getInstance().getConfig().getString("kits.pyro.name"),
-                SoupPvPPlugin.getInstance().getConfig().getInt("kits.pyro.price")
+                SoupPvPPlugin.getInstance().getConfig().getInt("kits.pyro.price"),
+                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.pyro.lore")
         );
     }
 
