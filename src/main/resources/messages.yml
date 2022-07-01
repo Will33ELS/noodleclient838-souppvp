@@ -1,0 +1,7 @@
+spawn:
+  waiting: "&cYou will be teleported in %seconds% seconds, you must no move!"
+  teleport: "&aTeleportation to spawn:"
+repair:
+  noSword: "&cYou have no wooden swords in your inventory to repair!"
+
+enoughCredit: "&cYou don't have enough credit!"
