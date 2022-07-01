@@ -1,0 +1,16 @@
+kits:
+  pvp:
+    price: 0
+    name: "PvP"
+    material: WOOD_SWORD
+    lore: []
+  athlete:
+    price: 1500
+    name: "Athlete"
+    material: SUGAR
+    lore: []
+  frog:
+    price: 1500
+    name: "Frog"
+    material: SUGAR
+    lore: []

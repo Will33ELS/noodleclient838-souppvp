@@ -1,0 +1,5 @@
+main: fr.will33.souppvp.SoupPvPPlugin
+name: SoupPvP
+author: William AVENTIN
+website: https://www.elesia.org
+version: ${project.version}
