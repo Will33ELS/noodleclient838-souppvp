@@ -6,5 +6,29 @@ repair:
 gui:
   kits:
     title: "Kits"
+  confirmBuy:
+    title: "Confirm GUI"
+    confirmItem:
+      material: "WOOL"
+      name: "&cConfirm"
+      lore: []
+    cancelItem:
+      material: "WOOL"
+      name: "&cCancel"
+      lore: []
+commands:
+  bounty:
+    help: "&e/bounty <target> <amount>"
+    broadcast: "&7A &e$%credit% &7bonus has been placed on &e%target%"
+    already: "&cA bonus has already been placed on this player!"
+    noOwn: "&cYou can't put a bounty on your own head!"
+  giveCredit:
+    help: "&e/givecredit <target> <amount>"
+    success: "&aYou have given %amount%$ to %target%"
 
+buyKit: "&aYou have purchased the kit %kit% for %credit%$"
+amountNotNumber: "&cThe amount must be a number greater than zero!"
+playerNotOnline: "&cThis player is not online!"
+wonBonus: "&aYou have won the %amount%$ bonus!"
 enoughCredit: "&cYou don't have enough credit!"
+noPermission: "&cYou don't have permission!"

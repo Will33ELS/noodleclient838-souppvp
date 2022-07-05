@@ -1,3 +1,13 @@
+sqllite:
+  enable: true
+  filename: "database.db"
+mysql:
+  enable: false
+  host: "127.0.0.1"
+  database: "Database"
+  username: "root"
+  password: "root"
+  prefixTable: "souppvp_"
 kits:
   pvp:
     price: 0
@@ -14,13 +24,18 @@ kits:
     name: "Frog"
     material: SUGAR
     lore: []
+  pyro:
+    price: 1500
+    name: "Pyro"
+    material: SUGAR
+    lore: []
 spawnTeleportDelayInSeconds: 5
 repair:
   cost: 35
 spawn:
   world: world
   x: 0
-  y: 0
+  y: 64
   z: 0
   yaw: 0
   pitch: 0

@@ -6,3 +6,5 @@ version: ${project.version}
 commands:
   spawn:
   repair:
+  bounty:
+  givecredit:

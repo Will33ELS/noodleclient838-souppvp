@@ -3,10 +3,13 @@ package fr.will33.souppvp.listener;
 import fr.will33.souppvp.SoupPvPPlugin;
 import fr.will33.souppvp.gui.KitsGUI;
 import fr.will33.souppvp.model.PvpPlayer;
+import fr.will33.souppvp.util.ChatUtil;
+import fr.will33.souppvp.util.StringUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -18,7 +21,9 @@ public class PlayerListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         PvpPlayer pvpPlayer = new PvpPlayer(player);
+        SoupPvPPlugin.getInstance().getPvPManager().loadPlayerData(pvpPlayer);
         SoupPvPPlugin.getInstance().getPvpPlayers().put(player.getUniqueId(), pvpPlayer);
+        SoupPvPPlugin.getInstance().getPvPManager().teleportToSpawn(player);
     }
 
     @EventHandler
@@ -38,10 +43,27 @@ public class PlayerListener implements Listener {
         Action action = event.getAction();
         SoupPvPPlugin soupPvPPlugin = SoupPvPPlugin.getInstance();
         if(action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
-            if(itemStack.getType() == soupPvPPlugin.getConfigurationManager().getBookItemStack().getType() && itemStack.hasItemMeta() && itemStack.getItemMeta().hasDisplayName() &&
+            if(itemStack != null && itemStack.getType() == soupPvPPlugin.getConfigurationManager().getBookItemStack().getType() && itemStack.hasItemMeta() && itemStack.getItemMeta().hasDisplayName() &&
             itemStack.getItemMeta().getDisplayName().equals(soupPvPPlugin.getConfigurationManager().getBookItemStack().getItemMeta().getDisplayName())){
                 event.setCancelled(true);
-                KitsGUI.openGUI(player);
+                soupPvPPlugin.openGUI(player, new KitsGUI());
+            }
+        }
+    }
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent event){
+        Player player = event.getEntity();
+        SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
+        if(instance.getPvPManager().getBountyPlayers().containsKey(player) && player.getKiller() != null){
+            Player killer = player.getKiller();
+            PvpPlayer pKiller = instance.getPvpPlayers().get(killer.getUniqueId());
+            if(pKiller != null){
+                int bonus = instance.getPvPManager().getBountyPlayers().get(player);
+                pKiller.addCredit(bonus);
+                killer.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("wonBonus")
+                        .replace("%amount%", StringUtil.formatCurrency(bonus))
+                ));
             }
         }
     }

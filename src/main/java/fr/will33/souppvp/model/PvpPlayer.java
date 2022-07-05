@@ -1,5 +1,6 @@
 package fr.will33.souppvp.model;
 
+import fr.will33.souppvp.SoupPvPPlugin;
 import fr.will33.souppvp.api.AbstractKit;
 import org.bukkit.entity.Player;
 
@@ -73,6 +74,7 @@ public class PvpPlayer {
      */
     public void addCredit(int amount){
         this.credit += amount;
+        SoupPvPPlugin.getInstance().getPlayerStockage().updateCredit(this);
     }
 
     /**
@@ -81,5 +83,6 @@ public class PvpPlayer {
      */
     public void takeCredit(int amount){
         this.credit -= amount;
+        SoupPvPPlugin.getInstance().getPlayerStockage().updateCredit(this);
     }
 }

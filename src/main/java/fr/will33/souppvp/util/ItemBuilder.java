@@ -27,6 +27,22 @@ public class ItemBuilder implements Cloneable{
     }
 
     /**
+     * Create item
+     * @param material Type of the item
+     * @param amont Amount of the stack
+     * @param data Data of the Item
+     * @param displayname Displayname of the item
+     * @param lore Lore of this item
+     */
+    public ItemBuilder(Material material, int amont, byte data, String displayname, List<String> lore) {
+        this.item = new ItemStack(material, amont, data);
+        this.itemM = this.item.getItemMeta();
+        this.itemM.setDisplayName(displayname);
+        this.itemM.setLore(lore);
+        this.item.setItemMeta(this.itemM);
+    }
+
+    /**
      * Get {@link ItemStack} instance
      * @return itemStack
      */
