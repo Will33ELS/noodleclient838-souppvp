@@ -36,10 +36,12 @@ public class SQLLiteDatabase implements ISQLBridge {
     private void setup(){
         if(!this.isConnected()){
             try{
+                Class.forName("org.sqlite.JDBC");
                 this.connection = DriverManager.getConnection("jdbc:sqlite:" + sqlFile.toAbsolutePath());
-
             }catch (SQLException err){
                 err.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -77,7 +79,7 @@ public class SQLLiteDatabase implements ISQLBridge {
      */
     private boolean isConnected() {
         try {
-            return (this.connection != null) && (!this.connection.isClosed()) && this.connection.isValid(1000);
+            return (this.connection != null) && (!this.connection.isClosed()) /*&& this.connection.isValid(1000)*/;
         } catch (SQLException e) {
             e.printStackTrace();
         }
