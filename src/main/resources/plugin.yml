@@ -3,6 +3,8 @@ name: SoupPvP
 author: William AVENTIN
 website: https://www.elesia.org
 version: ${project.version}
+softdepend:
+  - PlaceholderAPI
 commands:
   spawn:
   repair:

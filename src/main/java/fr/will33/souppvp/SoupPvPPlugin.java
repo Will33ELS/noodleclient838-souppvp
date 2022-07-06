@@ -12,6 +12,7 @@ import fr.will33.souppvp.manager.ConfigurationManager;
 import fr.will33.souppvp.manager.KitManager;
 import fr.will33.souppvp.manager.PvPManager;
 import fr.will33.souppvp.model.PvpPlayer;
+import fr.will33.souppvp.placeholder.CreditPlaceholder;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -68,6 +69,12 @@ public class SoupPvPPlugin extends JavaPlugin {
         new CommandManager().registerCommands(this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
+
+        try{
+            new CreditPlaceholder().register();
+        } catch (NoClassDefFoundError err){
+            this.getLogger().info("No placeholder plugin detected");
+        }
     }
 
     /**
