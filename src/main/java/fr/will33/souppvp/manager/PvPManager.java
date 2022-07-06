@@ -28,6 +28,7 @@ public class PvPManager {
     public void loadPlayerData(PvpPlayer pvpPlayer){
         Bukkit.getScheduler().runTaskAsynchronously(SoupPvPPlugin.getInstance(), () -> {
             SoupPvPPlugin.getInstance().getPlayerStockage().loadPlayer(pvpPlayer);
+            pvpPlayer.getKitsUnlocked().addAll(SoupPvPPlugin.getInstance().getPlayerStockage().getKitUnlocked(pvpPlayer.getPlayer().getUniqueId()));
         });
     }
 

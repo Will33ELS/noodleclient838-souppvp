@@ -4,13 +4,14 @@ import fr.will33.souppvp.SoupPvPPlugin;
 import fr.will33.souppvp.api.AbstractKit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class AthleteKit extends AbstractKit {
     public AthleteKit() {
         super(
-                Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.athlete.material")),
+                new ItemStack(Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.athlete.material")), 1, (byte) SoupPvPPlugin.getInstance().getConfig().getInt("kits.athlete.data")),
                 SoupPvPPlugin.getInstance().getConfig().getString("kits.athlete.name"),
                 SoupPvPPlugin.getInstance().getConfig().getInt("kits.athlete.price"),
                 SoupPvPPlugin.getInstance().getConfig().getStringList("kits.athlete.lore")

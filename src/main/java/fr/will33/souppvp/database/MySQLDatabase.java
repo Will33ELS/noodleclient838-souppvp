@@ -91,9 +91,17 @@ public class MySQLDatabase implements ISQLBridge {
      */
     public void onCreateTable(){
         try{
-            PreparedStatement preparedStatement = this.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS players (" +
+            PreparedStatement preparedStatement = this.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS " + this.prefixTable + "players (" +
                     "`uuid` VARCHAR(255) PRIMARY KEY," +
                     "`credit` INTEGER DEFAULT 0" +
+                    ")");
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+            preparedStatement = this.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS " + this.prefixTable + "kits_unlocked (" +
+                    "`id` INT PRIMARY KEY AUTO_INCREMENT," +
+                    "`uuid` VARCHAR(255) NOT NULL," +
+                    "`kit_name` VARCHAR(255) NOT NULL" +
                     ")");
             preparedStatement.executeUpdate();
             preparedStatement.close();

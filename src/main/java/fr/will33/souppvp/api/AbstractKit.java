@@ -4,6 +4,7 @@ import fr.will33.souppvp.SoupPvPPlugin;
 import fr.will33.souppvp.model.PvpPlayer;
 import fr.will33.souppvp.util.ChatUtil;
 import fr.will33.souppvp.util.ItemBuilder;
+import fr.will33.souppvp.util.StringUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,13 +24,13 @@ public abstract class AbstractKit implements Listener {
 
     public static List<AbstractKit> kits = new ArrayList<>();
     protected final SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
-    private final Material material;
+    private final ItemStack itemStack;
     private final String name;
     private final int price;
     private final List<String> lore;
 
-    public AbstractKit(Material material, String name, int price, List<String> lore){
-        this.material = material;
+    public AbstractKit(ItemStack itemStack, String name, int price, List<String> lore){
+        this.itemStack = itemStack;
         this.name = name;
         this.price = price;
         this.lore = lore;
@@ -60,8 +61,8 @@ public abstract class AbstractKit implements Listener {
      * Get material of the item
      * @return
      */
-    public Material getMaterial() {
-        return material;
+    public ItemStack getItemStack() {
+        return itemStack;
     }
 
     /**
@@ -85,8 +86,10 @@ public abstract class AbstractKit implements Listener {
      * @return
      */
     public ItemStack toItemStack(){
-        List<String> lore = this.lore.stream().map(ChatUtil::translate).collect(Collectors.toList());
-        return new ItemBuilder(this.material, 1, this.name, lore).toItemStack();
+        List<String> lore = this.lore.stream().map(l -> ChatUtil.translate(l
+                .replace("%price%", StringUtil.formatCurrency(this.getPrice()))
+        )).collect(Collectors.toList());
+        return new ItemBuilder(this.itemStack.getType(), 1, this.itemStack.getData().getData(), this.name, lore).toItemStack();
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -107,6 +110,15 @@ public abstract class AbstractKit implements Listener {
                 this.onSnick(player);
             }
         }
+    }
+
+    /**
+     * Get kit
+     * @param name Name of the kit
+     * @return
+     */
+    public static AbstractKit getKit(String name){
+        return kits.stream().filter(kit -> kit.getName().equals(name)).findFirst().orElse(null);
     }
 
 }

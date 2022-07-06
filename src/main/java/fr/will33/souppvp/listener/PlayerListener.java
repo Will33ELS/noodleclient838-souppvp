@@ -13,6 +13,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
@@ -66,6 +67,13 @@ public class PlayerListener implements Listener {
                 ));
             }
         }
+    }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent event){
+        SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
+        event.setRespawnLocation(instance.getConfigurationManager().getSpawnLocation());
+        instance.getPvPManager().teleportToSpawn(event.getPlayer());
     }
 
 }

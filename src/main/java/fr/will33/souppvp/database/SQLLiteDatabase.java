@@ -95,6 +95,14 @@ public class SQLLiteDatabase implements ISQLBridge {
                     ")");
             preparedStatement.executeUpdate();
             preparedStatement.close();
+
+            preparedStatement = this.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS kits_unlocked (" +
+                    "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "`uuid` VARCHAR(255) NOT NULL," +
+                    "`kit_name` VARCHAR(255) NOT NULL" +
+                    ")");
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException err){
             err.printStackTrace();
         }

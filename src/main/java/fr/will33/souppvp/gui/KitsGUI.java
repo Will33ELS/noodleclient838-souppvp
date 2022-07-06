@@ -33,9 +33,10 @@ public class KitsGUI extends AbstractGUI {
         }
         AbstractKit abstractKit = AbstractKit.kits.stream().filter(kit -> kit.getName().equals(action)).findFirst().orElse(null);
         if(abstractKit != null){
-            if(pvpPlayer.getKitsUnlocked().contains(abstractKit))
+            if(pvpPlayer.getKitsUnlocked().contains(abstractKit)) {
+                pvpPlayer.setKitSelected(abstractKit);
                 this.getPluginInstance().getPvPManager().giveKits(player, abstractKit);
-            else
+            } else
                 this.getPluginInstance().openGUI(player, new ConfirmBuyGUI(pvpPlayer, abstractKit));
         }
     }

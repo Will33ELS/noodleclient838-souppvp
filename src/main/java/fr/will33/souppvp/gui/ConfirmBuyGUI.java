@@ -1,5 +1,6 @@
 package fr.will33.souppvp.gui;
 
+import fr.will33.souppvp.SoupPvPPlugin;
 import fr.will33.souppvp.api.AbstractGUI;
 import fr.will33.souppvp.api.AbstractKit;
 import fr.will33.souppvp.model.PvpPlayer;
@@ -54,16 +55,20 @@ public class ConfirmBuyGUI extends AbstractGUI {
             this.getPluginInstance().openGUI(player, new KitsGUI());
             return;
         }
-        if(this.pvpPlayer.getCredit() >= this.abstractKit.getPrice() && action.equals("confirm")){
-            this.pvpPlayer.getKitsUnlocked().add(this.abstractKit);
-            this.pvpPlayer.takeCredit(this.abstractKit.getPrice());
-            player.closeInventory();
-            player.sendMessage(ChatUtil.translate(this.getPluginInstance().getMessagesConfig().getString("buyKit")
-                            .replace("%kit%", this.abstractKit.getName())
-                            .replace("%credit%", StringUtil.formatCurrency(this.abstractKit.getPrice()))
-                    ));
-            this.getPluginInstance().openGUI(player, new KitsGUI());
-        }
+        if(action.equals("confirm"))
+            if(this.pvpPlayer.getCredit() >= this.abstractKit.getPrice()){
+                this.pvpPlayer.getKitsUnlocked().add(this.abstractKit);
+                this.pvpPlayer.takeCredit(this.abstractKit.getPrice());
+                player.closeInventory();
+                player.sendMessage(ChatUtil.translate(this.getPluginInstance().getMessagesConfig().getString("buyKit")
+                        .replace("%kit%", this.abstractKit.getName())
+                        .replace("%credit%", StringUtil.formatCurrency(this.abstractKit.getPrice()))
+                ));
+                this.getPluginInstance().openGUI(player, new KitsGUI());
+                Bukkit.getScheduler().runTaskAsynchronously(SoupPvPPlugin.getInstance(), () -> SoupPvPPlugin.getInstance().getPlayerStockage().addKit(player.getUniqueId(), this.abstractKit));
+            } else {
+               player.sendMessage(ChatUtil.translate(this.getPluginInstance().getMessagesConfig().getString("enoughCredit")));
+            }
         if(action.equals("cancel")){
             player.closeInventory();
             this.getPluginInstance().openGUI(player, new KitsGUI());

@@ -11,24 +11,95 @@ mysql:
 kits:
   pvp:
     price: 0
+    data: 0
     name: "PvP"
     material: WOOD_SWORD
-    lore: []
+    lore:
+      - "&ePrice: &c%price%"
   athlete:
     price: 1500
+    data: 0
     name: "Athlete"
     material: SUGAR
-    lore: []
+    lore:
+      - "&ePrice: &c%price%"
   frog:
     price: 1500
+    data: 0
     name: "Frog"
-    material: SUGAR
-    lore: []
+    material: SLIME_BALL
+    lore:
+      - "&ePrice: &c%price%"
   pyro:
     price: 1500
+    data: 0
     name: "Pyro"
-    material: SUGAR
-    lore: []
+    material: BLAZE_POWDER
+    lore:
+      - "&ePrice: &c%price%"
+  snail:
+    price: 2000
+    data: 0
+    name: "Snail"
+    material: POTION
+    lore:
+      - "&ePrice: &c%price%"
+  viper:
+    price: 2500
+    data: 12
+    name: "Viper"
+    material: DYE
+    lore:
+      - "&ePrice: &c%price%"
+  spirit:
+    price: 2500
+    data: 0
+    name: "Spirit"
+    material: GLASS_BOTTLE
+    lore:
+      - "&ePrice: &c%price%"
+  vampire:
+    price: 3000
+    data: 0
+    name: "Vampire"
+    material: REDSTONE
+    lore:
+      - "&ePrice: &c%price%"
+  shaman:
+    price: 3000
+    data: 0
+    name: "Shaman"
+    material: DIRT
+    lore:
+      - "&ePrice: &c%price%"
+  ninja:
+    price: 3000
+    data: 0
+    name: "Ninja"
+    material: INK_SACK
+    lore:
+      - "&ePrice: &c%price%"
+  barbarian:
+    price: 3500
+    data: 0
+    name: "Barbarian"
+    material: IRON_INGOT
+    lore:
+      - "&ePrice: &c%price%"
+  warlord:
+    price: 3500
+    data: 0
+    name: "Warlord"
+    material: NETHER_WARTS
+    lore:
+      - "&ePrice: &c%price%"
+  avatar:
+    price: 3500
+    data: 0
+    name: "Avatar"
+    material: FEATHER
+    lore:
+      - "&ePrice: &c%price%"
 spawnTeleportDelayInSeconds: 5
 repair:
   cost: 35

@@ -12,16 +12,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class FrogKit extends AbstractKit {
+public class SpiritKit extends AbstractKit {
 
     private final Map<Player, Long> lastUse = new HashMap<>();
 
-    public FrogKit() {
+    public SpiritKit() {
         super(
-                new ItemStack(Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.frog.material")), 1, (byte) SoupPvPPlugin.getInstance().getConfig().getInt("kits.frog.data")),
-                SoupPvPPlugin.getInstance().getConfig().getString("kits.frog.name"),
-                SoupPvPPlugin.getInstance().getConfig().getInt("kits.frog.price"),
-                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.frog.lore")
+                new ItemStack(Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.spirit.material")), 1, (byte) SoupPvPPlugin.getInstance().getConfig().getInt("kits.spirit.data")),
+                SoupPvPPlugin.getInstance().getConfig().getString("kits.spirit.name"),
+                SoupPvPPlugin.getInstance().getConfig().getInt("kits.spirit.price"),
+                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.spirit.lore")
         );
     }
 
@@ -29,8 +29,9 @@ public class FrogKit extends AbstractKit {
     public void onSnick(Player player) {
         long lastUse = this.lastUse.getOrDefault(player, 0L);
         if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(150)){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 20 * 30, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 20 * 30, 1));
             this.lastUse.put(player, System.currentTimeMillis());
         }
     }
+
 }
