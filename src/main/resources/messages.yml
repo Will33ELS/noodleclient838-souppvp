@@ -25,6 +25,10 @@ commands:
   giveCredit:
     help: "&e/givecredit <target> <amount>"
     success: "&aYou have given %amount%$ to %target%"
+  pay:
+    help: "&e/pay <target> <amount>"
+    from: "&eYou have send &c%amount%$ &eto &c%target%"
+    target: "&eYou have received &c%amount%$ &efrom &c%from%"
 
 buyKit: "&aYou have purchased the kit %kit% for %credit%$"
 amountNotNumber: "&cThe amount must be a number greater than zero!"
