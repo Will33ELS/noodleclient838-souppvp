@@ -90,7 +90,7 @@ kits:
     price: 3500
     data: 0
     name: "Warlord"
-    material: NETHER_WARTS
+    material: NETHER_STALK
     lore:
       - "&ePrice: &c%price%"
   avatar:

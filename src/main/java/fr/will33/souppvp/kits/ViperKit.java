@@ -17,10 +17,10 @@ public class ViperKit extends AbstractKit {
 
     public ViperKit() {
         super(
-                new ItemStack(Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.snail.material")), 1, (byte) SoupPvPPlugin.getInstance().getConfig().getInt("kits.snail.data")),
-                SoupPvPPlugin.getInstance().getConfig().getString("kits.snail.name"),
-                SoupPvPPlugin.getInstance().getConfig().getInt("kits.snail.price"),
-                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.snail.lore")
+                new ItemStack(Material.getMaterial(SoupPvPPlugin.getInstance().getConfig().getString("kits.viper.material")), 1, (byte) SoupPvPPlugin.getInstance().getConfig().getInt("kits.viper.data")),
+                SoupPvPPlugin.getInstance().getConfig().getString("kits.viper.name"),
+                SoupPvPPlugin.getInstance().getConfig().getInt("kits.viper.price"),
+                SoupPvPPlugin.getInstance().getConfig().getStringList("kits.viper.lore")
         );
     }
 
