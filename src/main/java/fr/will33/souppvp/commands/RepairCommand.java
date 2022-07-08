@@ -23,7 +23,7 @@ public class RepairCommand implements CommandExecutor {
             } else {
                 boolean hasWoodSword = false;
                 for(ItemStack itemStack : player.getInventory().getContents()){
-                    if(itemStack.getType() == Material.WOOD_SWORD){
+                    if(itemStack.getType() == Material.WOOD_SWORD && itemStack.getDurability() != 0){
                         hasWoodSword = true;
                         itemStack.setDurability((short) 0);
                         break;
