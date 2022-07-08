@@ -26,7 +26,7 @@ public class AvatarKit extends AbstractKit {
     public void onSnick(Player player) {
         long lastUse = this.lastUse.getOrDefault(player, 0L);
         if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(35)){
-            player.setVelocity(player.getEyeLocation().getDirection().multiply(8));
+            player.setVelocity(player.getEyeLocation().getDirection().multiply(5));
             this.lastUse.put(player, System.currentTimeMillis());
         }
     }

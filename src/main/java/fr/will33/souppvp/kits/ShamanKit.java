@@ -37,7 +37,7 @@ public class ShamanKit extends AbstractKit {
             if(pDamager.getKitSelected() != null && pDamager.getKitSelected().equals(this)){
                 int chance = new Random().nextInt(100);
                 if(chance < 10) {
-                    victim.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 5 * 20, 1));
+                    victim.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 5 * 20, 0));
                 }
             }
         }
@@ -47,7 +47,7 @@ public class ShamanKit extends AbstractKit {
     public void onSnick(Player player) {
         long lastUse = this.lastUse.getOrDefault(player, 0L);
         if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(60 * 3)){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20 * 90, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20 * 90, 0));
             this.lastUse.put(player, System.currentTimeMillis());
         }
     }

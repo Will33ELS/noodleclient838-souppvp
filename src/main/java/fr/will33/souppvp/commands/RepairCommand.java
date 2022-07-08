@@ -16,7 +16,7 @@ public class RepairCommand implements CommandExecutor {
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
             SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
-            PvpPlayer pvpPlayer = instance.getPvpPlayers().get(player);
+            PvpPlayer pvpPlayer = instance.getPvpPlayers().get(player.getUniqueId());
             int cost = instance.getConfig().getInt("repair.cost");
             if(pvpPlayer.getCredit() < cost){
                 player.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("enoughCredit")));

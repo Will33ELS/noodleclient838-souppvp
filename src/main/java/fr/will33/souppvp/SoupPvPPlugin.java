@@ -77,6 +77,11 @@ public class SoupPvPPlugin extends JavaPlugin {
         }
     }
 
+    @Override
+    public void onDisable() {
+        Bukkit.shutdown();
+    }
+
     /**
      * Get all open gui
      * @return

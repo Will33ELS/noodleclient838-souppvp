@@ -48,7 +48,7 @@ kits:
     price: 2500
     data: 12
     name: "Viper"
-    material: DYE
+    material: INK_SACK
     lore:
       - "&ePrice: &c%price%"
   spirit:
@@ -101,6 +101,7 @@ kits:
     lore:
       - "&ePrice: &c%price%"
 spawnTeleportDelayInSeconds: 5
+creditOnKill: 0
 repair:
   cost: 35
 spawn:

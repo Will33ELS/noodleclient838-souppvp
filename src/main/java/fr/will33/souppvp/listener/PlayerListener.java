@@ -60,11 +60,15 @@ public class PlayerListener implements Listener {
             Player killer = player.getKiller();
             PvpPlayer pKiller = instance.getPvpPlayers().get(killer.getUniqueId());
             if(pKiller != null){
-                int bonus = instance.getPvPManager().getBountyPlayers().get(player);
-                pKiller.addCredit(bonus);
-                killer.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("wonBonus")
-                        .replace("%amount%", StringUtil.formatCurrency(bonus))
-                ));
+                if(instance.getPvPManager().getBountyPlayers().containsKey(player.getUniqueId())) {
+                    int bonus = instance.getPvPManager().getBountyPlayers().get(player);
+                    pKiller.addCredit(bonus);
+                    killer.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("wonBonus")
+                            .replace("%amount%", StringUtil.formatCurrency(bonus))
+                    ));
+                }
+                pKiller.addCredit(instance.getConfig().getInt("creditOnKill"));
+                instance.getPlayerStockage().updateCredit(pKiller);
             }
         }
     }
