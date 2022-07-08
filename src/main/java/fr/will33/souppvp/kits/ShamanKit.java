@@ -47,7 +47,7 @@ public class ShamanKit extends AbstractKit {
     public void onSnick(Player player) {
         long lastUse = this.lastUse.getOrDefault(player, 0L);
         if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(60 * 3)){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20 * 90, 0));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20 * 90, 1));
             this.lastUse.put(player, System.currentTimeMillis());
         }
     }
