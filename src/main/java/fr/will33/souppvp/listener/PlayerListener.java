@@ -71,6 +71,7 @@ public class PlayerListener implements Listener {
                 instance.getPlayerStockage().updateCredit(pKiller);
             }
         }
+        instance.getPvpPlayers().get(player.getUniqueId()).setKitSelected(null);
     }
 
     @EventHandler

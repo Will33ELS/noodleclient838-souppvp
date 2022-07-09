@@ -25,6 +25,11 @@ public class BarbarianKit extends AbstractKit {
     }
 
     @Override
+    public void onDeath(Player player) {
+        this.lastUse.remove(player);
+    }
+
+    @Override
     public void onSnick(Player player) {
         long lastUse = this.lastUse.getOrDefault(player, 0L);
         if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(60 * 2)){
