@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Random;
 
@@ -30,10 +32,7 @@ public class VampireKit extends AbstractKit {
             if(pDamager.getKitSelected() != null && pDamager.getKitSelected().equals(this)){
                 int chance = new Random().nextInt(100);
                 if(chance < 15){
-                    if(damager.getHealth() + 1 > damager.getMaxHealth())
-                        damager.setHealth(damager.getMaxHealth());
-                    else
-                        damager.setHealth(damager.getHealth() + 1);
+                    damager.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 5 * 20, 1));
                 }
             }
         }

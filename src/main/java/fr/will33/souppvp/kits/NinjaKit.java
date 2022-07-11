@@ -33,7 +33,7 @@ public class NinjaKit extends AbstractKit {
             if(pDamager.getKitSelected() != null && pDamager.getKitSelected().equals(this)){
                 int chance = new Random().nextInt(100);
                 if(chance < 15) {
-                    victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 10 * 20, 1));
+                    victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 5 * 20, 1));
                 }
             }
         }

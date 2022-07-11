@@ -56,11 +56,10 @@ public class PlayerListener implements Listener {
     public void onDeath(PlayerDeathEvent event){
         Player player = event.getEntity();
         SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
-        if(instance.getPvPManager().getBountyPlayers().containsKey(player) && player.getKiller() != null){
             Player killer = player.getKiller();
             PvpPlayer pKiller = instance.getPvpPlayers().get(killer.getUniqueId());
             if(pKiller != null){
-                if(instance.getPvPManager().getBountyPlayers().containsKey(player.getUniqueId())) {
+                if(instance.getPvPManager().getBountyPlayers().containsKey(player)) {
                     int bonus = instance.getPvPManager().getBountyPlayers().get(player);
                     pKiller.addCredit(bonus);
                     killer.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("wonBonus")
@@ -70,7 +69,6 @@ public class PlayerListener implements Listener {
                 pKiller.addCredit(instance.getConfig().getInt("creditOnKill"));
                 instance.getPlayerStockage().updateCredit(pKiller);
             }
-        }
         instance.getPvpPlayers().get(player.getUniqueId()).setKitSelected(null);
     }
 
