@@ -98,6 +98,7 @@ public abstract class AbstractKit implements Listener {
         PvpPlayer pvpPlayer = this.instance.getPvpPlayers().get(player.getUniqueId());
         if(pvpPlayer.getKitSelected() != null && pvpPlayer.getKitSelected().equals(this)){
             this.onDeath(player);
+            pvpPlayer.setKitSelected(null);
         }
     }
 

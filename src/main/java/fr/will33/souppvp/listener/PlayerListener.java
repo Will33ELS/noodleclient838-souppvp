@@ -69,7 +69,6 @@ public class PlayerListener implements Listener {
                 pKiller.addCredit(instance.getConfig().getInt("creditOnKill"));
                 instance.getPlayerStockage().updateCredit(pKiller);
             }
-        instance.getPvpPlayers().get(player.getUniqueId()).setKitSelected(null);
     }
 
     @EventHandler
@@ -77,6 +76,7 @@ public class PlayerListener implements Listener {
         SoupPvPPlugin instance = SoupPvPPlugin.getInstance();
         event.setRespawnLocation(instance.getConfigurationManager().getSpawnLocation());
         instance.getPvPManager().teleportToSpawn(event.getPlayer());
+        instance.getPvpPlayers().get(event.getPlayer().getUniqueId()).setKitSelected(null);
     }
 
 }
