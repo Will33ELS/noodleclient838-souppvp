@@ -65,6 +65,7 @@ public class PlayerListener implements Listener {
                     killer.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("wonBonus")
                             .replace("%amount%", StringUtil.formatCurrency(bonus))
                     ));
+                    instance.getPvPManager().getBountyPlayers().remove(player);
                 }
                 pKiller.addCredit(instance.getConfig().getInt("creditOnKill"));
                 instance.getPlayerStockage().updateCredit(pKiller);
