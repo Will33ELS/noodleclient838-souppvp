@@ -44,7 +44,7 @@ public class PayCommand implements CommandExecutor {
                                 .replace("%amount%", StringUtil.formatCurrency(amount))
                                 .replace("%target%", target.getName())
                         ));
-                        player.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("commands.pay.target")
+                        target.sendMessage(ChatUtil.translate(instance.getMessagesConfig().getString("commands.pay.target")
                                 .replace("%amount%", StringUtil.formatCurrency(amount))
                                 .replace("%from%", player.getName())
                         ));

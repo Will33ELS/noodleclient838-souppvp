@@ -8,7 +8,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 public class PyroKit extends AbstractKit {
+    private final Map<Player, Long> lastUse = new HashMap<>();
 
     public PyroKit() {
         super(
@@ -20,7 +25,16 @@ public class PyroKit extends AbstractKit {
     }
 
     @Override
+    public void onDeath(Player player) {
+        this.lastUse.remove(player);
+    }
+
+    @Override
     public void onSnick(Player player) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 20 * 120, 1));
+        long lastUse = this.lastUse.getOrDefault(player, 0L);
+        if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(90 * 3)){
+            player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 20 * 120, 1));
+            this.lastUse.put(player, System.currentTimeMillis());
+        }
     }
 }

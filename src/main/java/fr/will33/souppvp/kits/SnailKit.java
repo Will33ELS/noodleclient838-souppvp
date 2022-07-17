@@ -33,7 +33,7 @@ public class SnailKit extends AbstractKit {
             if(pDamager.getKitSelected() != null && pDamager.getKitSelected().equals(this)){
                 int chance = new Random().nextInt(100);
                 if(chance < 15){
-                    victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5 * 20, 1));
+                    victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5 * 20, 0));
                 }
             }
         }

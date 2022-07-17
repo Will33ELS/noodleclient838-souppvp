@@ -34,6 +34,7 @@ public class WarlordKit extends AbstractKit {
         long lastUse = this.lastUse.getOrDefault(player, 0L);
         if(System.currentTimeMillis() > lastUse + TimeUnit.SECONDS.toMillis(60 * 2)){
             player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20 * 5, 0));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 5, 0));
             this.lastUse.put(player, System.currentTimeMillis());
         }
     }
